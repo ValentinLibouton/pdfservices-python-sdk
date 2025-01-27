@@ -31,16 +31,16 @@ logging.basicConfig(level=logging.INFO)
 # Refer to README.md for instructions on how to run the samples.
 #
 class OcrPDF(object):
-    def __init__(self):
+    def __init__(self, filepath, client_id, client_secret):
         try:
-            file = open('src/resources/ocrInput.pdf', 'rb')
+            file = open(filepath, 'rb')
             input_stream = file.read()
             file.close()
 
             # Initial setup, create credentials instance
             credentials = ServicePrincipalCredentials(
-                client_id=os.getenv('PDF_SERVICES_CLIENT_ID'),
-                client_secret=os.getenv('PDF_SERVICES_CLIENT_SECRET')
+                client_id=client_id,
+                client_secret=client_secret
             )
 
             # Creates a PDF Services instance
@@ -78,5 +78,4 @@ class OcrPDF(object):
         return f"output/OcrPDF/ocr{time_stamp}.pdf"
 
 
-if __name__ == "__main__":
-    OcrPDF()
+
