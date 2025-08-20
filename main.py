@@ -25,8 +25,9 @@ def load_credentials_from_json(file_path):
     return client_id, client_secret, organization_id
 
 client_id, client_secret, _ = load_credentials_from_json("pdfservices-api-credentials.json")
-filepath = input("Entrez le chemin du fichier: ")
-
+# filepath = input("Entrez le chemin du fichier: ")
+#filepath = os.path.abspath("input/ocrInput.pdf")
+filepath = "/home/wm18vw/Nas.Documents/Obsidian/Notes-Valentin/Umons/grh/théorie/tous les documents_triés/11_CHAPITRE 3 - DAN PRICE.pdf"
 op = OcrPDF(filepath=filepath, client_id=client_id, client_secret=client_secret)
 link = op.create_output_file_path()
 print(f"Le fichier se trouve: {link}")
